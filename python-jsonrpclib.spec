@@ -7,7 +7,7 @@ Release:        10%{?dist}
 Summary:        JSON-RPC v2.0 client library for Python
 
 License:        ASL 2.0
-URL:            http://github.com/tcalmant/jsonrpclib/
+URL:            https://github.com/tcalmant/jsonrpclib/
 Source0:        https://files.pythonhosted.org/packages/source/j/%{upstream}/%{upstream}-%{version}.tar.gz
 
 BuildArch:      noarch
