@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.3.1
-Release:        10%{?dist}
+Release:        10%{?dist}1
 Summary:        JSON-RPC v2.0 client library for Python
 
 License:        ASL 2.0
