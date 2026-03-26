@@ -1,44 +1,37 @@
-%global srcname jsonrpclib
-%global upstream jsonrpclib-pelix
+%define module jsonrpclib
+%define oname jsonrpclib_pelix
 
-Name:           python-%{srcname}
-Version:        0.3.1
-Release:        10%{?dist}1
-Summary:        JSON-RPC v2.0 client library for Python
+Name:		python-jsonrpclib
+Version:	1.0.0
+Release:	1
+Summary:	JSON-RPC v2.0 client library for Python
+Group:		Development/Python
+License:	Apache-2.0
+URL:		https://github.com/tcalmant/jsonrpclib
+Source0:	%{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-License:        ASL 2.0
-URL:            https://github.com/tcalmant/jsonrpclib/
-Source0:        https://files.pythonhosted.org/packages/source/j/%{upstream}/%{upstream}-%{version}.tar.gz
+BuildSystem:	python
+BuildArch:	noarch
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(hatchling)
+BuildRequires:	python%{pyver}dist(wheel)
 
-BuildArch:      noarch
-BuildRequires:  python3-devel
+%description
+This library is an implementation of the JSON-RPC specification in pure Python.
 
-%global _description\
-This project is an implementation of the JSON-RPC v2.0 specification\
-(backwards-compatible) as a client library, for Python 2.7 and Python 3.\
-This version is a fork of jsonrpclib by Josh Marshall, usable with Pelix\
-remote services.\
+It is backwards-compatible with the 1.0 specification and supports all of
+the new proposed features of 2.0, including:
+  batch submission
+  keyword arguments
+  notifications
+  class translation
 
-%description %_description
+It is designed to be as compatible with the syntax of xmlrpclib as possible
+(it extends where possible), so that projects using xmlrpclib could easily
+be modified to use JSON and experiment with the differences.
 
-%package -n python3-%{srcname}
-Summary: %summary
-%{?python_provide:%python_provide python3-%{srcname}}
-
-%description -n python3-%{srcname} %_description
-
-%prep
-%setup -q -n %{upstream}-%{version}
-rm -rf jsonrpclib_pelix.egg-info
-
-%build
-%py3_build
-
-%install
-%py3_install
-
-%files -n python3-%{srcname}
-%license LICENSE.txt
-%doc README.rst
-%{python3_sitelib}/%{srcname}
-%{python3_sitelib}/jsonrpclib_pelix-%{version}-py%{python3_version}.egg-info
+%files
+%doc README.md
+%{python3_sitelib}/%{module}
+%{python3_sitelib}/%{oname}-%{version}.dist-info
