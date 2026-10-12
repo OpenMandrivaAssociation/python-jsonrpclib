@@ -3,7 +3,7 @@
 
 Name:		python-jsonrpclib
 Version:	1.0.0
-Release:	1
+Release:	2
 Summary:	JSON-RPC v2.0 client library for Python
 Group:		Development/Python
 License:	Apache-2.0
